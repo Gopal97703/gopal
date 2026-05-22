@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Gopal's DevOps Page</title>
+  <style>
+    body {
+      /* Gradient background for a colorful effect */
+      background: linear-gradient(135deg, #ff7eb9, #ff65a3, #7afcff, #feff9c, #fff740);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-weight: bold;
+      font-size: 2.5em;
+      color: #222;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.7); /* semi-transparent box */
+    }
+  </style>
+</head>
+<body>
+  <h1>HY GOPAL THIS SIDE<br>DEVOPS ASPIRING</h1>
+</body>
+</html>
+
