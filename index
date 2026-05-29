@@ -1,32 +1,508 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Gopal's DevOps Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gopal Tiwari | DevOps Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <style>
-    body {
-      /* Gradient background for a colorful effect */
-      background: linear-gradient(135deg, #ff7eb9, #ff65a3, #7afcff, #feff9c, #fff740);
-      height: 100vh;
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #050816;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at top left, rgba(0,255,255,0.12), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(162,0,255,0.15), transparent 30%);
+      z-index: -1;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(5, 8, 22, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 999;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #00d9ff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00d9ff;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, #00d9ff, #8b5cf6);
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      display: inline-block;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(0,217,255,0.4);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(0,217,255,0.8);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      min-height: 100vh;
+      gap: 50px;
+      padding: 60px 0;
+    }
+
+    .hero-text h1 {
+      font-size: 75px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(to right, #00d9ff, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 20px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.3);
+    }
+
+    .hero-image {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: Arial, sans-serif;
     }
-    h1 {
-      font-weight: bold;
-      font-size: 2.5em;
-      color: #222;
+
+    .hero-image img {
+      width: 100%;
+      max-width: 550px;
+      filter: drop-shadow(0 0 25px #00d9ff);
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
       text-align: center;
-      padding: 20px;
+      font-size: 45px;
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: #00d9ff;
+    }
+
+    .tech-stack {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+      gap: 20px;
+    }
+
+    .tech-card {
+      padding: 30px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0,217,255,0.4);
+    }
+
+    .tech-card i {
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #00d9ff;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 20px;
+    }
+
+    .pipeline-step {
+      padding: 25px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .pipeline-step:hover {
+      transform: scale(1.05);
+      border-color: #00d9ff;
+    }
+
+    .pipeline-step h3 {
+      margin-top: 15px;
+      margin-bottom: 10px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      padding: 30px;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 25px rgba(139,92,246,0.4);
+    }
+
+    .project-card h3 {
+      margin-bottom: 15px;
+      color: #00d9ff;
+    }
+
+    .project-card p {
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0,217,255,0.5);
+    }
+
+    .about-text h2 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: #cbd5e1;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .skills span {
+      background: rgba(255,255,255,0.06);
+      padding: 10px 18px;
       border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.7); /* semi-transparent box */
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #94a3b8;
+      margin-top: 50px;
+    }
+
+    @media(max-width: 1000px) {
+      .hero,
+      .about {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 55px;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>HY GOPAL THIS SIDE<br>DEVOPS ASPIRING</h1>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">🚀 DevOps Journey</div>
+
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#pipeline">Pipeline</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About Me</a></li>
+        </ul>
+
+        <a href="https://github.com" class="btn">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero container" id="home">
+    <div class="hero-text">
+      <h1>
+        FROM CODE TO <br>
+        <span>PRODUCTION</span>
+      </h1>
+
+      <p>
+        DevOps Engineer | CI/CD | Kubernetes | GitOps <br><br>
+        Automating deployments with Jenkins, Docker,
+        Kubernetes & ArgoCD.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#pipeline" class="btn">Explore Pipeline</a>
+        <a href="https://github.com" class="btn">View GitHub</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://cdn-icons-png.flaticon.com/512/919/919853.png" alt="DevOps">
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title"><span>Tech</span> Stack</h2>
+
+      <div class="tech-stack">
+        <div class="tech-card glass">
+          <i class="fa-brands fa-jenkins"></i>
+          <h3>Jenkins</h3>
+        </div>
+
+        <div class="tech-card glass">
+          <i class="fa-brands fa-docker"></i>
+          <h3>Docker</h3>
+        </div>
+
+        <div class="tech-card glass">
+          <i class="fa-brands fa-github"></i>
+          <h3>GitHub</h3>
+        </div>
+
+        <div class="tech-card glass">
+          <i class="fa-solid fa-dharmachakra"></i>
+          <h3>Kubernetes</h3>
+        </div>
+
+        <div class="tech-card glass">
+          <i class="fa-solid fa-code-branch"></i>
+          <h3>ArgoCD</h3>
+        </div>
+
+        <div class="tech-card glass">
+          <i class="fa-brands fa-aws"></i>
+          <h3>AWS</h3>
+        </div>
+
+        <div class="tech-card glass">
+          <i class="fa-brands fa-linux"></i>
+          <h3>Linux</h3>
+        </div>
+
+        <div class="tech-card glass">
+          <i class="fa-brands fa-git-alt"></i>
+          <h3>Git</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pipeline">
+    <div class="container">
+      <h2 class="section-title">CI/CD <span>Pipeline</span></h2>
+
+      <div class="pipeline">
+        <div class="pipeline-step glass">
+          <i class="fa-brands fa-github fa-3x"></i>
+          <h3>Checkout Code</h3>
+          <p>Pull latest code from GitHub</p>
+        </div>
+
+        <div class="pipeline-step glass">
+          <i class="fa-brands fa-docker fa-3x"></i>
+          <h3>Build Image</h3>
+          <p>Create Docker image automatically</p>
+        </div>
+
+        <div class="pipeline-step glass">
+          <i class="fa-solid fa-upload fa-3x"></i>
+          <h3>Push Image</h3>
+          <p>Push Docker image to DockerHub</p>
+        </div>
+
+        <div class="pipeline-step glass">
+          <i class="fa-solid fa-code-merge fa-3x"></i>
+          <h3>Update Manifest</h3>
+          <p>Update Kubernetes deployment YAML</p>
+        </div>
+
+        <div class="pipeline-step glass">
+          <i class="fa-solid fa-rocket fa-3x"></i>
+          <h3>ArgoCD Sync</h3>
+          <p>Deploy application automatically</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured <span>Projects</span></h2>
+
+      <div class="projects">
+        <div class="project-card glass">
+          <h3>Jenkins CI/CD Pipeline</h3>
+          <p>
+            Built automated CI/CD pipeline using Jenkins,
+            Docker and Kubernetes with GitHub integration.
+          </p>
+        </div>
+
+        <div class="project-card glass">
+          <h3>GitOps Deployment with ArgoCD</h3>
+          <p>
+            Implemented GitOps workflow using ArgoCD
+            for automatic Kubernetes synchronization.
+          </p>
+        </div>
+
+        <div class="project-card glass">
+          <h3>Kubernetes Deployment</h3>
+          <p>
+            Managed containerized applications using
+            Deployments, Services and NodePort.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container about">
+      <div>
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png" alt="Profile">
+      </div>
+
+      <div class="about-text">
+        <h2>Hi, I'm <span style="color:#00d9ff">Gopal Tiwari</span></h2>
+
+        <p>
+          DevOps Engineer passionate about automation,
+          cloud infrastructure and scalable deployments.
+          I enjoy working with CI/CD, Kubernetes,
+          Docker and GitOps workflows.
+        </p>
+
+        <div class="skills">
+          <span>Docker</span>
+          <span>Kubernetes</span>
+          <span>Jenkins</span>
+          <span>GitHub</span>
+          <span>ArgoCD</span>
+          <span>AWS</span>
+          <span>Linux</span>
+          <span>CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Gopal Tiwari | DevOps Engineer | Building Automation • Deploying Innovation
+  </footer>
+
 </body>
 </html>
-
